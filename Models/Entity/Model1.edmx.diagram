@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4c5a9c920f2f4462b4b9662be7a3d5dc" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="RentACarProjectModel.ActionsForRent" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentACarProjectModel.Admins" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentACarProjectModel.BodyTypes" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentACarProjectModel.Brands" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentACarProjectModel.Cars" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentACarProjectModel.Colors" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentACarProjectModel.Contacts" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentACarProjectModel.FuelTypes" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentACarProjectModel.Gears" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentACarProjectModel.Models" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentACarProjectModel.Motorcycles" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentACarProjectModel.Users" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="RentACarProjectModel.FK_ActionsForRent_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Motorcycles_BodyTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Motorcycles_Brands" ManuallyRouted="false" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Motorcycles_Colors" ManuallyRouted="false" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Motorcycles_Colors1" ManuallyRouted="false" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Motorcycles_FuelTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Motorcycles_Gears" ManuallyRouted="false" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Motorcycles_Models" ManuallyRouted="false" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Cars_BodyTypes" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Cars_Brands" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Cars_Colors" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Cars_FuelTypes" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Cars_Gears" />
+        <AssociationConnector Association="RentACarProjectModel.FK_Cars_Models" />
+        <EntityTypeShape EntityType="RentACarProjectModel.Accessories" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="RentACarProjectModel.SpareParts" Width="1.5" PointX="7.375" PointY="7.75" />
+      </Diagram>
+      <Diagram DiagramId="645a3e1f781548ad80372661568cb9c0" Name="Diagram2" >
+        <EntityTypeShape EntityType="RentACarProjectModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

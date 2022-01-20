@@ -1,0 +1,1091 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RentACarProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accessories">
+          <Key>
+            <PropertyRef Name="AccessoryId" />
+          </Key>
+          <Property Name="AccessoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccessoryName" Type="varchar" MaxLength="50" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="UnitsInStock" Type="int" />
+        </EntityType>
+        <EntityType Name="ActionsForRent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActionType" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="RentDate" Type="smalldatetime" />
+          <Property Name="ReturnDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminName" Type="varchar" MaxLength="20" />
+          <Property Name="FirstName" Type="varchar" MaxLength="20" />
+          <Property Name="LastName" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Authority" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="BodyTypes">
+          <Key>
+            <PropertyRef Name="BodyTypeId" />
+          </Key>
+          <Property Name="BodyTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BodyType" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandId" Type="int" />
+          <Property Name="ColorId" Type="int" />
+          <Property Name="ModelId" Type="int" />
+          <Property Name="BodyTypeId" Type="int" />
+          <Property Name="GearId" Type="int" />
+          <Property Name="FuelTypeId" Type="int" />
+          <Property Name="ModelYear" Type="varchar" MaxLength="30" />
+          <Property Name="Decription" Type="varchar" MaxLength="50" />
+          <Property Name="ActionType" Type="int" />
+        </EntityType>
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="ColorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ColorName" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" />
+          <Property Name="Message" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="FuelTypes">
+          <Key>
+            <PropertyRef Name="FuelTypeId" />
+          </Key>
+          <Property Name="FuelTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FuelType" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Gears">
+          <Key>
+            <PropertyRef Name="GearId" />
+          </Key>
+          <Property Name="GearId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gear" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Models">
+          <Key>
+            <PropertyRef Name="ModelId" />
+          </Key>
+          <Property Name="ModelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModelName" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Motorcycles">
+          <Key>
+            <PropertyRef Name="MotorcycleId" />
+          </Key>
+          <Property Name="MotorcycleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModelId" Type="int" />
+          <Property Name="ColorId" Type="int" />
+          <Property Name="ModelYear" Type="varchar" MaxLength="30" />
+          <Property Name="BodyTypeId" Type="int" />
+          <Property Name="GearId" Type="int" />
+          <Property Name="FuelTypeId" Type="int" />
+          <Property Name="Decription" Type="varchar" MaxLength="50" />
+          <Property Name="ActionType" Type="int" />
+          <Property Name="BrandId" Type="int" />
+        </EntityType>
+        <EntityType Name="SpareParts">
+          <Key>
+            <PropertyRef Name="SparePartId" />
+          </Key>
+          <Property Name="SparePartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SparePart" Type="varchar" MaxLength="50" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="UnitsInStock" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+          <Property Name="FirstName" Type="varchar" MaxLength="20" />
+          <Property Name="LastName" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="30" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Photo" Type="varchar" MaxLength="30" />
+          <Property Name="Telephone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ActionsForRent_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="ActionsForRent" Type="Self.ActionsForRent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ActionsForRent">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_BodyTypes">
+          <End Role="BodyTypes" Type="Self.BodyTypes" Multiplicity="0..1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BodyTypes">
+              <PropertyRef Name="BodyTypeId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="BodyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="BrandId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Colors">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_FuelTypes">
+          <End Role="FuelTypes" Type="Self.FuelTypes" Multiplicity="0..1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelTypes">
+              <PropertyRef Name="FuelTypeId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Gears">
+          <End Role="Gears" Type="Self.Gears" Multiplicity="0..1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gears">
+              <PropertyRef Name="GearId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="GearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Models">
+          <End Role="Models" Type="Self.Models" Multiplicity="0..1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="ModelId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_BodyTypes">
+          <End Role="BodyTypes" Type="Self.BodyTypes" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BodyTypes">
+              <PropertyRef Name="BodyTypeId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="BodyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="BrandId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_Colors">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_Colors1">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_FuelTypes">
+          <End Role="FuelTypes" Type="Self.FuelTypes" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelTypes">
+              <PropertyRef Name="FuelTypeId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_Gears">
+          <End Role="Gears" Type="Self.Gears" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gears">
+              <PropertyRef Name="GearId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="GearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_Models">
+          <End Role="Models" Type="Self.Models" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="ModelId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="RentACarProjectModelStoreContainer">
+          <EntitySet Name="Accessories" EntityType="Self.Accessories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActionsForRent" EntityType="Self.ActionsForRent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BodyTypes" EntityType="Self.BodyTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuelTypes" EntityType="Self.FuelTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gears" EntityType="Self.Gears" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Models" EntityType="Self.Models" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Motorcycles" EntityType="Self.Motorcycles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpareParts" EntityType="Self.SpareParts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ActionsForRent_Users" Association="Self.FK_ActionsForRent_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ActionsForRent" EntitySet="ActionsForRent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_BodyTypes" Association="Self.FK_Cars_BodyTypes">
+            <End Role="BodyTypes" EntitySet="BodyTypes" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Brands" Association="Self.FK_Cars_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Colors" Association="Self.FK_Cars_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_FuelTypes" Association="Self.FK_Cars_FuelTypes">
+            <End Role="FuelTypes" EntitySet="FuelTypes" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Gears" Association="Self.FK_Cars_Gears">
+            <End Role="Gears" EntitySet="Gears" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Models" Association="Self.FK_Cars_Models">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_BodyTypes" Association="Self.FK_Motorcycles_BodyTypes">
+            <End Role="BodyTypes" EntitySet="BodyTypes" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_Brands" Association="Self.FK_Motorcycles_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_Colors" Association="Self.FK_Motorcycles_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_Colors1" Association="Self.FK_Motorcycles_Colors1">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_FuelTypes" Association="Self.FK_Motorcycles_FuelTypes">
+            <End Role="FuelTypes" EntitySet="FuelTypes" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_Gears" Association="Self.FK_Motorcycles_Gears">
+            <End Role="Gears" EntitySet="Gears" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_Models" Association="Self.FK_Motorcycles_Models">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RentACarProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ActionsForRent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionType" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="RentDate" Type="DateTime" Precision="0" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_ActionsForRent_Users" FromRole="ActionsForRent" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Authority" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BodyTypes">
+          <Key>
+            <PropertyRef Name="BodyTypeId" />
+          </Key>
+          <Property Name="BodyTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BodyType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Motorcycles" Relationship="Self.FK_Motorcycles_BodyTypes" FromRole="BodyTypes" ToRole="Motorcycles" />
+          <NavigationProperty Name="Cars" Relationship="RentACarProjectModel.FK_Cars_BodyTypes" FromRole="BodyTypes" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Motorcycles" Relationship="Self.FK_Motorcycles_Brands" FromRole="Brands" ToRole="Motorcycles" />
+          <NavigationProperty Name="Cars" Relationship="RentACarProjectModel.FK_Cars_Brands" FromRole="Brands" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandId" Type="Int32" />
+          <Property Name="ColorId" Type="Int32" />
+          <Property Name="ModelId" Type="Int32" />
+          <Property Name="BodyTypeId" Type="Int32" />
+          <Property Name="GearId" Type="Int32" />
+          <Property Name="FuelTypeId" Type="Int32" />
+          <Property Name="ModelYear" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Decription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActionType" Type="Int32" />
+          <NavigationProperty Name="BodyTypes" Relationship="RentACarProjectModel.FK_Cars_BodyTypes" FromRole="Cars" ToRole="BodyTypes" />
+          <NavigationProperty Name="Brands" Relationship="RentACarProjectModel.FK_Cars_Brands" FromRole="Cars" ToRole="Brands" />
+          <NavigationProperty Name="Colors" Relationship="RentACarProjectModel.FK_Cars_Colors" FromRole="Cars" ToRole="Colors" />
+          <NavigationProperty Name="FuelTypes" Relationship="RentACarProjectModel.FK_Cars_FuelTypes" FromRole="Cars" ToRole="FuelTypes" />
+          <NavigationProperty Name="Gears" Relationship="RentACarProjectModel.FK_Cars_Gears" FromRole="Cars" ToRole="Gears" />
+          <NavigationProperty Name="Models" Relationship="RentACarProjectModel.FK_Cars_Models" FromRole="Cars" ToRole="Models" />
+        </EntityType>
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="ColorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ColorName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Motorcycles" Relationship="Self.FK_Motorcycles_Colors" FromRole="Colors" ToRole="Motorcycles" />
+          <NavigationProperty Name="Motorcycles1" Relationship="Self.FK_Motorcycles_Colors1" FromRole="Colors" ToRole="Motorcycles" />
+          <NavigationProperty Name="Cars" Relationship="RentACarProjectModel.FK_Cars_Colors" FromRole="Colors" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FuelTypes">
+          <Key>
+            <PropertyRef Name="FuelTypeId" />
+          </Key>
+          <Property Name="FuelTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FuelType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Motorcycles" Relationship="Self.FK_Motorcycles_FuelTypes" FromRole="FuelTypes" ToRole="Motorcycles" />
+          <NavigationProperty Name="Cars" Relationship="RentACarProjectModel.FK_Cars_FuelTypes" FromRole="FuelTypes" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="Gears">
+          <Key>
+            <PropertyRef Name="GearId" />
+          </Key>
+          <Property Name="GearId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gear" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Motorcycles" Relationship="Self.FK_Motorcycles_Gears" FromRole="Gears" ToRole="Motorcycles" />
+          <NavigationProperty Name="Cars" Relationship="RentACarProjectModel.FK_Cars_Gears" FromRole="Gears" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="Models">
+          <Key>
+            <PropertyRef Name="ModelId" />
+          </Key>
+          <Property Name="ModelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModelName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Motorcycles" Relationship="Self.FK_Motorcycles_Models" FromRole="Models" ToRole="Motorcycles" />
+          <NavigationProperty Name="Cars" Relationship="RentACarProjectModel.FK_Cars_Models" FromRole="Models" ToRole="Cars" />
+        </EntityType>
+        <EntityType Name="Motorcycles">
+          <Key>
+            <PropertyRef Name="MotorcycleId" />
+          </Key>
+          <Property Name="MotorcycleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModelId" Type="Int32" />
+          <Property Name="ColorId" Type="Int32" />
+          <Property Name="ModelYear" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BodyTypeId" Type="Int32" />
+          <Property Name="GearId" Type="Int32" />
+          <Property Name="FuelTypeId" Type="Int32" />
+          <Property Name="Decription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActionType" Type="Int32" />
+          <Property Name="BrandId" Type="Int32" />
+          <NavigationProperty Name="BodyTypes" Relationship="Self.FK_Motorcycles_BodyTypes" FromRole="Motorcycles" ToRole="BodyTypes" />
+          <NavigationProperty Name="Brands" Relationship="Self.FK_Motorcycles_Brands" FromRole="Motorcycles" ToRole="Brands" />
+          <NavigationProperty Name="Colors" Relationship="Self.FK_Motorcycles_Colors" FromRole="Motorcycles" ToRole="Colors" />
+          <NavigationProperty Name="Colors1" Relationship="Self.FK_Motorcycles_Colors1" FromRole="Motorcycles" ToRole="Colors" />
+          <NavigationProperty Name="FuelTypes" Relationship="Self.FK_Motorcycles_FuelTypes" FromRole="Motorcycles" ToRole="FuelTypes" />
+          <NavigationProperty Name="Gears" Relationship="Self.FK_Motorcycles_Gears" FromRole="Motorcycles" ToRole="Gears" />
+          <NavigationProperty Name="Models" Relationship="Self.FK_Motorcycles_Models" FromRole="Motorcycles" ToRole="Models" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ActionsForRent" Relationship="Self.FK_ActionsForRent_Users" FromRole="Users" ToRole="ActionsForRent" />
+        </EntityType>
+        <Association Name="FK_ActionsForRent_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="ActionsForRent" Type="Self.ActionsForRent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ActionsForRent">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_BodyTypes">
+          <End Role="BodyTypes" Type="Self.BodyTypes" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BodyTypes">
+              <PropertyRef Name="BodyTypeId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="BodyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="BrandId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_Colors">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_Colors1">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_FuelTypes">
+          <End Role="FuelTypes" Type="Self.FuelTypes" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelTypes">
+              <PropertyRef Name="FuelTypeId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_Gears">
+          <End Role="Gears" Type="Self.Gears" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gears">
+              <PropertyRef Name="GearId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="GearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Motorcycles_Models">
+          <End Role="Models" Type="Self.Models" Multiplicity="0..1" />
+          <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="ModelId" />
+            </Principal>
+            <Dependent Role="Motorcycles">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RentACarProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActionsForRent" EntityType="Self.ActionsForRent" />
+          <EntitySet Name="Admins" EntityType="Self.Admins" />
+          <EntitySet Name="BodyTypes" EntityType="Self.BodyTypes" />
+          <EntitySet Name="Brands" EntityType="Self.Brands" />
+          <EntitySet Name="Cars" EntityType="Self.Cars" />
+          <EntitySet Name="Colors" EntityType="Self.Colors" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" />
+          <EntitySet Name="FuelTypes" EntityType="Self.FuelTypes" />
+          <EntitySet Name="Gears" EntityType="Self.Gears" />
+          <EntitySet Name="Models" EntityType="Self.Models" />
+          <EntitySet Name="Motorcycles" EntityType="Self.Motorcycles" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_ActionsForRent_Users" Association="Self.FK_ActionsForRent_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ActionsForRent" EntitySet="ActionsForRent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_BodyTypes" Association="Self.FK_Motorcycles_BodyTypes">
+            <End Role="BodyTypes" EntitySet="BodyTypes" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_Brands" Association="Self.FK_Motorcycles_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_Colors" Association="Self.FK_Motorcycles_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_Colors1" Association="Self.FK_Motorcycles_Colors1">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_FuelTypes" Association="Self.FK_Motorcycles_FuelTypes">
+            <End Role="FuelTypes" EntitySet="FuelTypes" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_Gears" Association="Self.FK_Motorcycles_Gears">
+            <End Role="Gears" EntitySet="Gears" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Motorcycles_Models" Association="Self.FK_Motorcycles_Models">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Motorcycles" EntitySet="Motorcycles" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(RentACarProjectModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(RentACarProjectModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK_Cars_BodyTypes" Association="RentACarProjectModel.FK_Cars_BodyTypes">
+            <End Role="BodyTypes" EntitySet="BodyTypes" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Brands" Association="RentACarProjectModel.FK_Cars_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Colors" Association="RentACarProjectModel.FK_Cars_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_FuelTypes" Association="RentACarProjectModel.FK_Cars_FuelTypes">
+            <End Role="FuelTypes" EntitySet="FuelTypes" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Gears" Association="RentACarProjectModel.FK_Cars_Gears">
+            <End Role="Gears" EntitySet="Gears" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Models" Association="RentACarProjectModel.FK_Cars_Models">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <EntitySet Name="Accessories" EntityType="RentACarProjectModel.Accessories" />
+          <EntitySet Name="SpareParts" EntityType="RentACarProjectModel.SpareParts" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <Association Name="FK_Cars_BodyTypes">
+          <End Type="RentACarProjectModel.BodyTypes" Role="BodyTypes" Multiplicity="0..1" />
+          <End Type="RentACarProjectModel.Cars" Role="Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BodyTypes">
+              <PropertyRef Name="BodyTypeId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="BodyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Brands">
+          <End Type="RentACarProjectModel.Brands" Role="Brands" Multiplicity="0..1" />
+          <End Type="RentACarProjectModel.Cars" Role="Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="BrandId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Colors">
+          <End Type="RentACarProjectModel.Colors" Role="Colors" Multiplicity="0..1" />
+          <End Type="RentACarProjectModel.Cars" Role="Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_FuelTypes">
+          <End Type="RentACarProjectModel.FuelTypes" Role="FuelTypes" Multiplicity="0..1" />
+          <End Type="RentACarProjectModel.Cars" Role="Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelTypes">
+              <PropertyRef Name="FuelTypeId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Gears">
+          <End Type="RentACarProjectModel.Gears" Role="Gears" Multiplicity="0..1" />
+          <End Type="RentACarProjectModel.Cars" Role="Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gears">
+              <PropertyRef Name="GearId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="GearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Models">
+          <End Type="RentACarProjectModel.Models" Role="Models" Multiplicity="0..1" />
+          <End Type="RentACarProjectModel.Cars" Role="Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="ModelId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Accessories">
+          <Key>
+            <PropertyRef Name="AccessoryId" />
+          </Key>
+          <Property Name="AccessoryId" Type="Int32" Nullable="false" />
+          <Property Name="AccessoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UnitsInStock" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SpareParts">
+          <Key>
+            <PropertyRef Name="SparePartId" />
+          </Key>
+          <Property Name="SparePartId" Type="Int32" Nullable="false" />
+          <Property Name="SparePart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UnitsInStock" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RentACarProjectModelStoreContainer" CdmEntityContainer="RentACarProjectEntities">
+          <EntitySetMapping Name="ActionsForRent">
+            <EntityTypeMapping TypeName="RentACarProjectModel.ActionsForRent">
+              <MappingFragment StoreEntitySet="ActionsForRent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RentDate" ColumnName="RentDate" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="RentACarProjectModel.Admins">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Authority" ColumnName="Authority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BodyTypes">
+            <EntityTypeMapping TypeName="RentACarProjectModel.BodyTypes">
+              <MappingFragment StoreEntitySet="BodyTypes">
+                <ScalarProperty Name="BodyTypeId" ColumnName="BodyTypeId" />
+                <ScalarProperty Name="BodyType" ColumnName="BodyType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="RentACarProjectModel.Brands">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="RentACarProjectModel.Cars">
+              <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+                <ScalarProperty Name="BodyTypeId" ColumnName="BodyTypeId" />
+                <ScalarProperty Name="GearId" ColumnName="GearId" />
+                <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
+                <ScalarProperty Name="ModelYear" ColumnName="ModelYear" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="RentACarProjectModel.Colors">
+              <MappingFragment StoreEntitySet="Colors">
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="RentACarProjectModel.Contacts">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuelTypes">
+            <EntityTypeMapping TypeName="RentACarProjectModel.FuelTypes">
+              <MappingFragment StoreEntitySet="FuelTypes">
+                <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
+                <ScalarProperty Name="FuelType" ColumnName="FuelType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gears">
+            <EntityTypeMapping TypeName="RentACarProjectModel.Gears">
+              <MappingFragment StoreEntitySet="Gears">
+                <ScalarProperty Name="GearId" ColumnName="GearId" />
+                <ScalarProperty Name="Gear" ColumnName="Gear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="RentACarProjectModel.Models">
+              <MappingFragment StoreEntitySet="Models">
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Motorcycles">
+            <EntityTypeMapping TypeName="RentACarProjectModel.Motorcycles">
+              <MappingFragment StoreEntitySet="Motorcycles">
+                <ScalarProperty Name="MotorcycleId" ColumnName="MotorcycleId" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+                <ScalarProperty Name="ModelYear" ColumnName="ModelYear" />
+                <ScalarProperty Name="BodyTypeId" ColumnName="BodyTypeId" />
+                <ScalarProperty Name="GearId" ColumnName="GearId" />
+                <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RentACarProjectModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="RentACarProjectModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="RentACarProjectModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="RentACarProjectModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="RentACarProjectModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="RentACarProjectModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentACarProjectModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="RentACarProjectModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentACarProjectModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="RentACarProjectModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="RentACarProjectModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Accessories">
+            <EntityTypeMapping TypeName="RentACarProjectModel.Accessories">
+              <MappingFragment StoreEntitySet="Accessories">
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="AccessoryName" ColumnName="AccessoryName" />
+                <ScalarProperty Name="AccessoryId" ColumnName="AccessoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpareParts">
+            <EntityTypeMapping TypeName="RentACarProjectModel.SpareParts">
+              <MappingFragment StoreEntitySet="SpareParts">
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="SparePart" ColumnName="SparePart" />
+                <ScalarProperty Name="SparePartId" ColumnName="SparePartId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
